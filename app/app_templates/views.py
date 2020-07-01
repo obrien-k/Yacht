@@ -248,7 +248,7 @@ def update(template_id):
                 items.append(template_content)
     except Exception as exc:
         # connection problems or incorrect JSON data
-        flash('Template update failed')
+        flash('Template update failed '+ exc)
     else:
         db.session.delete(template)
         db.session.commit()

@@ -1,14 +1,26 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="ui text container">
-      <h1>Hello {% if not (current_user.is_authenticated) %} world {% else %} {{ current_user.full_name() }} {% endif %},</h1>
-
+<div class="ui stackable centered grid container">
+  <div class="twelve wide column">
+    <div class="ui centered message">
+      <h1 class="ui center aligned header">Hello {% if not (current_user.is_authenticated) %} world {% else %} {{ current_user.full_name() }} {% endif %},</h1>
         <p>
           Welcome to Yacht, we are still in early development on this program and appreciate you taking a look and helping us test it.
           If you run into any issues please be sure to let us know so we can fix them ASAP.
-
         </p>
-
     </div>
+
+        <div class="ui text container">
+          <h2 class="ui center aligned header"> System Information </h2>
+        </div>
+        <div class=" ui horizontal section divider "> General </div>
+        <table class="ui compact green definition table">
+          <tr><td>Hostname</td><td>{{ hostname }}</td></tr>
+          <tr><td>IP address</td><td>{{ host_ip }}</td></tr>
+          <tr><td>Docker Version</td><td>{{ dclient.api._version }}</td></tr>
+          <tr><td>Docker socket</td><td>{{ dclient.api.base_url }}</td></tr>
+      </table>
+  </div>
+</div>
 {% endblock %}
